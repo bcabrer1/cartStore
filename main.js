@@ -30,10 +30,7 @@ img: "images/img-4.jpg"
 }
 ];
 
-let basket = [{
-    id: "uhdfcbdc",
-    item: 1
-}];
+let basket = JSON.parse(localStorage.getItem("data")) || []
 
 let generateShop = () => {
     return (shop.innerHTML = shopItemsData
@@ -79,7 +76,8 @@ let increment = (id) => {
     } else {
         search.item += 1
     }
- 
+    // this is the ket when sotring data
+    localStorage.setItem("data", JSON.stringify(basket));
     update(selectedItem.id);
 };
 let decrement = (id) => {
@@ -91,7 +89,8 @@ let decrement = (id) => {
         search.item -=1;
     }
 
-   
+    localStorage.setItem("data", JSON.stringify(basket));
+
     update(selectedItem.id);
 }
 let update = (id) => {
